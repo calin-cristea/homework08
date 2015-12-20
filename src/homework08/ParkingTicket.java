@@ -2,17 +2,17 @@ package homework08;
 
 public class ParkingTicket {
 	
-	private boolean occupiedState;
+	private boolean isOccupied;
 	private int spotNo;
 	private final double distanceToParkingSpot = 0.5;
 	
 	public ParkingTicket(int spotNo) {
-		occupiedState = false;
+		isOccupied = false;
 		this.spotNo = spotNo;
 	}
 
-	public boolean getOccupiedState() {
-		return occupiedState;
+	public boolean isOccupied() {
+		return isOccupied;
 	}
 	
 	public int getSpotNo() {
@@ -20,15 +20,37 @@ public class ParkingTicket {
 	}
 	
 	public void park() {
-		occupiedState = true;
+		isOccupied = true;
 	}
 
 	public void unPark() {
-		occupiedState = false;
+		isOccupied = false;
 	}
 
 	public double getDistanceToParkingSpot() {
 		return distanceToParkingSpot;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + spotNo;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ParkingTicket other = (ParkingTicket) obj;
+		if (spotNo != other.spotNo)
+			return false;
+		return true;
 	}
 	
 }

@@ -12,6 +12,9 @@ public class Main {
 		car = carPark.retrieveVehicle(ticket);
 		float amountOfFuelAfterParking = car.getCurrentAmountOfFuel();
 		
+		System.out.println(amountOfFuelBeforeParking);
+		System.out.println(amountOfFuelAfterParking);
+		
 		//ValletParking<Helicopter> carPark = new ValletParking<Helicopter>();
 
 		//ValletParking<Motorcycle> carPark = new ValletParking<Motorcycle>();
