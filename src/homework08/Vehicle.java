@@ -6,6 +6,6 @@ package homework08;
  */
 public interface Vehicle {
 	public void start();
-	public void drive(Float km);
+	public void drive(double d);
 	public void stop();
 }

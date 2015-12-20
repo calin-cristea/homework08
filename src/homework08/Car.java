@@ -1,58 +1,52 @@
 package homework08;
 
 public abstract class Car implements Vehicle {
+
 	protected String brandDescription;
-	
 	protected float fuelTankSize;
 	protected String fuelType;
-	protected int gearNo;
-	//MU = l/100 km
+	protected int numberOfGears;
+	// MU = l/100 km
 	protected float fuelConsumedPer100Km;
-	//MU = g/km
+	// MU = g/km
 	protected float pollutionPerKm;
-	
+
 	private float fuelAmount;
 	private String chassisNumber;
-	
+
 	protected Float[] gearConsumptions;
 	protected int currentGear;
-	
+
 	protected float fuelConsumed;
-	protected float distanceDriven;
-	
+	protected double distanceDriven;
+
 	@Override
 	public void start() {
 		fuelConsumed = 0;
 		// this also resets the current pollution.
 		distanceDriven = 0;
-		if(currentGear > 1) {
+		if (currentGear > 1) {
 			System.out.println("Yor gear is " + currentGear + ". You can't start the engine with gear bigger than 1");
-			//System.exit(0);
-			// Code modified for testing purposes
 			throw new RuntimeException();
 		}
 		currentGear = 1;
 	}
-	
+
 	public void shiftGear(int gear) {
-		if(gear > gearNo) {
-			System.out.println("You entered a gear greater than " + gearNo);
-			//System.exit(0);
-			// Code modified for testing purposes
+		if (gear > numberOfGears) {
+			System.out.println("You entered a gear greater than " + numberOfGears);
 			throw new RuntimeException();
-		} 
+		}
 		currentGear = gear;
 		System.out.println("You switched to " + currentGear + " gear.");
 	}
-	
+
 	@Override
-	public void drive(Float km) {
+	public void drive(double km) {
 		fuelConsumed += gearConsumptions[currentGear - 1] * km / 100;
 		distanceDriven += km;
-		if(fuelConsumed >= fuelAmount) {
+		if (fuelConsumed >= fuelAmount) {
 			System.out.println("Dear pilot your tank is empty!!!");
-			//System.exit(0);
-			// Code modified for testing purposes
 			throw new RuntimeException();
 		}
 	}
@@ -64,34 +58,35 @@ public abstract class Car implements Vehicle {
 		System.out.println("You have consumed " + fuelConsumed + " fuel");
 	}
 
-	public void setAvailableFuel(float fuelAmount) {
+	public void setCurrentAmountOfFuel(float fuelAmount) {
 		this.fuelAmount = fuelAmount;
+	}
+
+	// get current amount of fuel
+	public float getCurrentAmountOfFuel() {
+		return fuelAmount;
 	}
 
 	public void setChassisNumber(String chassisNumber) {
 		this.chassisNumber = chassisNumber;
 	}
-	
+
 	public String getChassisNumber() {
 		return chassisNumber;
 	}
-	
-	// get current amount of fuel
-	public float getAvailableFuel() {
-		return fuelAmount;
-	}
-	
-	public float getAverageFuelConsumption() {
+
+	public double getAverageFuelConsumption() {
 		return fuelConsumed * 100 / distanceDriven;
 	}
-	
-	public float getPollution() {
+
+	public double getPollution() {
 		return distanceDriven * pollutionPerKm;
 	}
+
 	public String getBrandDescription() {
 		return brandDescription;
 	}
-	
+
 	public float getFuelConsumedPer100Km() {
 		return fuelConsumedPer100Km;
 	}
