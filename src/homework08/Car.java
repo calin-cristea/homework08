@@ -18,7 +18,7 @@ public abstract class Car implements Vehicle {
 	protected int currentGear;
 
 	protected float fuelConsumed;
-	protected double distanceDriven;
+	protected float distanceDriven;
 
 	@Override
 	public void start() {
@@ -42,7 +42,7 @@ public abstract class Car implements Vehicle {
 	}
 
 	@Override
-	public void drive(double km) {
+	public void drive(float km) {
 		fuelConsumed += gearConsumptions[currentGear - 1] * km / 100;
 		distanceDriven += km;
 		if (fuelConsumed >= fuelAmount) {
@@ -75,11 +75,11 @@ public abstract class Car implements Vehicle {
 		return chassisNumber;
 	}
 
-	public double getAverageFuelConsumption() {
+	public float getAverageFuelConsumption() {
 		return fuelConsumed * 100 / distanceDriven;
 	}
 
-	public double getPollution() {
+	public float getPollution() {
 		return distanceDriven * pollutionPerKm;
 	}
 

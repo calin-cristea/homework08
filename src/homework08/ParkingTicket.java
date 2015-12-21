@@ -4,7 +4,7 @@ public class ParkingTicket {
 	
 	private boolean isOccupied;
 	private int spotNo;
-	private final double distanceToParkingSpot = 0.5;
+	private final float distanceToParkingSpot = 0.5f;
 	
 	public ParkingTicket(int spotNo) {
 		isOccupied = false;
@@ -27,7 +27,7 @@ public class ParkingTicket {
 		isOccupied = false;
 	}
 
-	public double getDistanceToParkingSpot() {
+	public float getDistanceToParkingSpot() {
 		return distanceToParkingSpot;
 	}
 

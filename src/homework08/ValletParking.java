@@ -1,6 +1,5 @@
 package homework08;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -8,7 +7,6 @@ import java.util.Map;
 public class ValletParking<T extends Vehicle> {
 
 	private int numberOfSpots;
-	// private ArrayList<ParkingTicket> spots = new ArrayList<>(numberOfSpots);
 	private Map<ParkingTicket, T> spots = new HashMap<>(numberOfSpots);
 
 	// for every new ValetParking object you must define initial number of
@@ -45,27 +43,16 @@ public class ValletParking<T extends Vehicle> {
 		vehicle.drive(ticket.getDistanceToParkingSpot());
 		vehicle.stop();
 		return vehicle;
-		
 
 	}
-
-	/*
-	 * private ParkingTicket findFirstEmptySpot() {
-	 * 
-	 * if (spots.size() < numberOfSpots) { return new
-	 * ParkingTicket(spots.size()); } else { throw new ParkingLotFullException(
-	 * "Parking lot is full. Please try again later!"); } }
-	 */
 
 	public ParkingTicket findFirstEmptySpot() {
 		ParkingTicket emptySpot = null;
 		Iterator<ParkingTicket> itr = spots.keySet().iterator();
-		// boolean foundEmptySpot = false;
 		while (itr.hasNext()) {
 			emptySpot = itr.next();
 			if (!emptySpot.isOccupied()) {
 				return emptySpot;
-				// foundEmptySpot = true;
 			}
 		}
 		return null;

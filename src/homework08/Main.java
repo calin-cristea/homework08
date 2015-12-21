@@ -3,21 +3,36 @@ package homework08;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		ValletParking<Car> carPark = new ValletParking<Car>(10);
-		
 		Car car = new Mondeo(45, "hik65454");
 		float amountOfFuelBeforeParking = car.getCurrentAmountOfFuel();
 		ParkingTicket ticket = carPark.parkVehicle(car);
 		car = carPark.retrieveVehicle(ticket);
 		float amountOfFuelAfterParking = car.getCurrentAmountOfFuel();
-		
+
 		System.out.println(amountOfFuelBeforeParking);
 		System.out.println(amountOfFuelAfterParking);
-		
-		//ValletParking<Helicopter> carPark = new ValletParking<Helicopter>();
 
-		//ValletParking<Motorcycle> carPark = new ValletParking<Motorcycle>();
+		ValletParking<Helicopter> helicopterPark = new ValletParking<Helicopter>(3);
+		Helicopter helicopter = new HelicopterDemo(100f);
+		amountOfFuelBeforeParking = helicopter.getCurrentAmountOfFuel();
+		ticket = helicopterPark.parkVehicle(helicopter);
+		helicopter = helicopterPark.retrieveVehicle(ticket);
+		amountOfFuelAfterParking = helicopter.getCurrentAmountOfFuel();
+
+		System.out.println(amountOfFuelBeforeParking);
+		System.out.println(amountOfFuelAfterParking);
+
+		ValletParking<Motorcycle> motorcyclePark = new ValletParking<Motorcycle>(20);
+		Motorcycle motorcycle = new MotorcycleDemo(10);
+		amountOfFuelBeforeParking = motorcycle.getCurrentAmountOfFuel();
+		ticket = motorcyclePark.parkVehicle(motorcycle);
+		motorcycle = motorcyclePark.retrieveVehicle(ticket);
+		amountOfFuelAfterParking = motorcycle.getCurrentAmountOfFuel();
+
+		System.out.println(amountOfFuelBeforeParking);
+		System.out.println(amountOfFuelAfterParking);
 
 	}
 
