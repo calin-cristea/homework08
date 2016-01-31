@@ -42,12 +42,11 @@ public abstract class Car implements Vehicle {
 	}
 
 	@Override
-	public void drive(float km) {
+	public void drive(float km) throws NoFuelException {
 		fuelConsumed += gearConsumptions[currentGear - 1] * km / 100;
 		distanceDriven += km;
 		if (fuelConsumed >= fuelAmount) {
-			System.out.println("Dear pilot your tank is empty!!!");
-			throw new RuntimeException();
+			throw new NoFuelException("Dear pilot your tank is empty!!!");
 		}
 	}
 

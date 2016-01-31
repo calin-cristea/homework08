@@ -6,6 +6,6 @@ package homework08;
  */
 public interface Vehicle {
 	public void start();
-	public void drive(float f);
+	public void drive(float f)throws NoFuelException;
 	public void stop();
 }
